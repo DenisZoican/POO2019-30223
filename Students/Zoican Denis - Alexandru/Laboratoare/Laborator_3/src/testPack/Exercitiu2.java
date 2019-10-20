@@ -17,18 +17,21 @@ public class Exercitiu2 {
 		
 		Exercitiu2 eu = new Exercitiu2();
 		
+		int pasi = 1;
 		int a = 1;
-		int b = -4;
-		int c = 4;
-		double x0 = -20;
+		int b = 4;
+		int c = -5;
+		double x0 = 2;
 		double x1 = x0 - eu.f(a,b,c,x0)/eu.fd(a,b,c,x0);
 		
 		while(x1-x0 > 0.01)
 		{
+			pasi++;
 			x0 = x1;
 			x1 =  x0 - eu.f(a,b,c,x0)/eu.fd(a,b,c,x0);
 		}
 		
+		System.out.println("Numar pasi este "+pasi);
 		System.out.println(x1);
 		
 	}
