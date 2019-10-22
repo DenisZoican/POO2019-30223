@@ -187,7 +187,7 @@ public class MatrixOperations {
 		for(int i=0;i<n1;i++)
 			for(int j=0;j<m1;j++)
 			{
-				if(i==j && a[i][j].compareTo(new BigDecimal(1))!=0)
+				if((i==j && a[i][j].compareTo(new BigDecimal(1))!=0) || (i!=j && a[i][j].compareTo(new BigDecimal(0))!=0))
 				{
 					return false;
 				}
@@ -216,17 +216,26 @@ public class MatrixOperations {
 	}
 	
 	public static void main(String[] args) {
+		
 		BigDecimal a[][]= {
 				{new BigDecimal(2),new BigDecimal(-2),new BigDecimal(1)},
 				{new BigDecimal(1),new BigDecimal(3),new BigDecimal(-2)},
-				{new BigDecimal(1),new BigDecimal(-1),new BigDecimal(-1)}
+				{new BigDecimal(3),new BigDecimal(-1),new BigDecimal(-1)}
 				};
+		
 		BigDecimal b[][]= {
 				{new BigDecimal(-3)},
-				{new BigDecimal(13)},
+				{new BigDecimal(1)},
 				{new BigDecimal(2)},
 				};
 		
+		///System of equations
+		
+		if(determinant(a).compareTo(new BigDecimal(0))==0)
+		{
+			System.out.println("Determinant 0");
+			return;
+		}
 		///Adjugate matrix
 		BigDecimal adj[][] = new BigDecimal[a.length][a[0].length];
 		for(int i=0;i<a.length;i++)
@@ -266,6 +275,8 @@ public class MatrixOperations {
 				System.out.print(adj[i][j].doubleValue());
 			System.out.println();
 		}
+		
+		
 		
 	}
 	

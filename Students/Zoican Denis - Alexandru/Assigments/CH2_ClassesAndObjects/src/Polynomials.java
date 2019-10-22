@@ -26,11 +26,11 @@ public class Polynomials {
 		
 		inputOutput.readFromFile(eu);
 
+		inputOutput.resetFile();
+		
 		for(int i=0;i<eu.op.length;i++)
 		{
-			System.out.println();
-			System.out.println(eu.op[i]);
-			System.out.println();
+			inputOutput.writeInFile("\n"+eu.op[i]+"\n");
 			
 			if(eu.op[i].contentEquals("ADD")==true)
 			{
@@ -59,5 +59,10 @@ public class Polynomials {
 				functions.EVAL(eu.s1,eu.s2, n);
 			} 
 		}
+		
+		inputOutput.writeInFile("DIVIDE:\n");
+		functions.DIVIDE(eu.s1, eu.s2);
+		inputOutput.writeInFile("\nRoot aprox:");
+		functions.rootAprox(eu.s1, 3, 4);
 	}
 }

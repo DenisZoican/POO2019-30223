@@ -5,7 +5,8 @@ public class NameInverter {
 	{
 		if(a==null || a=="")
 			return a;
-		String[] tok = a.split(" ");
+		a.replaceAll(" ","");
+		String[] tok = a.split("\\s+");
 		
 		if(tok.length==1)
 		{
@@ -27,7 +28,7 @@ public class NameInverter {
 		
 		NameInverter name = new NameInverter();
 		
-		System.out.println(name.revert("Mrs. Phd. Firstname Lastname"));
+		System.out.println(name.revert("Fist asda      "));
 	}
 
 }
