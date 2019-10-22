@@ -35,7 +35,7 @@ public class Functions {
 					eu.writeInFile("+");
 				eu.writeInFile(Integer.toString(s[i]));
 				if(i!=ns-1)
-					eu.writeInFile("*x^"+(ns-i-1));
+					eu.writeInFile("x^"+(ns-i-1));
 			}
 		}
 		eu.writeInFile("\n");
@@ -75,7 +75,7 @@ public class Functions {
 			eu.writeInFile(coef+"");
 			
 			if(putere!=0)
-				eu.writeInFile("*x^"+(int)putere);
+				eu.writeInFile("x^"+(int)putere);
 			
 			pas=1;
 			
@@ -119,7 +119,7 @@ public class Functions {
 							eu.writeInFile(a3[j]+"");
 							if(j!=n1-1)
 							{
-								eu.writeInFile("*x^"+(n1-j-1));
+								eu.writeInFile("x^"+(n1-j-1));
 							}
 						}
 					
@@ -224,7 +224,7 @@ public class Functions {
 					eu.writeInFile("+");
 				eu.writeInFile(Integer.toString(sum[i]));
 				if(i!=nc-1)
-					eu.writeInFile("*x^"+(nc-i-1));
+					eu.writeInFile("x^"+(nc-i-1));
 			}
 		}
 		eu.writeInFile("\n");
@@ -261,7 +261,7 @@ public class Functions {
 					eu.writeInFile("+");
 				eu.writeInFile(Integer.toString(sum[i]));
 				if(i!=nc-1)
-					eu.writeInFile("*x^"+(nc-i-1));
+					eu.writeInFile("x^"+(nc-i-1));
 			}
 		}
 		eu.writeInFile("\n");
@@ -330,7 +330,7 @@ public class Functions {
 					eu.writeInFile("+");
 				eu.writeInFile(a3[i]+"");
 				if(i!=n1-1)
-					eu.writeInFile("*x^"+(n1-i-1));
+					eu.writeInFile("x^"+(n1-i-1));
 			}
 		}
 		eu.writeInFile("\n");
@@ -344,7 +344,7 @@ public class Functions {
 					eu.writeInFile("+");
 				eu.writeInFile(b3[i]+"");
 				if(i!=n2-1)
-					eu.writeInFile("*x^"+(n2-i-1));
+					eu.writeInFile("x^"+(n2-i-1));
 			}
 		}
 		eu.writeInFile("\n");
