@@ -10,6 +10,7 @@ public class E4_2 {
 		 Autovehicul ex = new Autovehicul();
 		 
 		 ex.accelerare(20);
+		 ex.decelerare(10);
 		 System.out.println("Viteza este "+ex.getViteza());
 		 ex.schimbareTreapta(2);
 		 System.out.println("Treapta este "+ex.getTreapta());
