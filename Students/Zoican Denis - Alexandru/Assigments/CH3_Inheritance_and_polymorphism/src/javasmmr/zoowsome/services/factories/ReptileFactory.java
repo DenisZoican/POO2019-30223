@@ -12,9 +12,9 @@ public class ReptileFactory extends SpeciesFactory {
 		if (Constants.Animals.Reptiles.TURTLE.equals(type)) {
 			return new Turtle((r1==1),"Turtle",4); // leave empty constructor, for now!
 		} else if (Constants.Animals.Reptiles.SNAKE.equals(type)) {
-			return new Turtle((r1==1),"Snake",4);
+			return new Snake((r1==1),"Snake",4);
 		} else if (Constants.Animals.Reptiles.CHAMELEON.equals(type)){
-			return new Turtle((r1==1),"Chameleon",4);
+			return new Chameleon((r1==1),"Chameleon",4);
 		} else {
 			throw new Exception("Invalid type");
 		}

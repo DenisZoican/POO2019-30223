@@ -5,8 +5,8 @@ public abstract class Aquatic extends Animal{
 		    saltwater,
 		    freshwater
 		  }
-	public Integer avgSwimDepth;
-	public type waterType;
+	private Integer avgSwimDepth;
+	private type waterType;
 	
 	Aquatic(Integer avgSwimDepth,type waterType,String name,Integer nrOfLegs){
 		super(nrOfLegs,name);
@@ -14,4 +14,19 @@ public abstract class Aquatic extends Animal{
 		this.waterType = waterType;
 	}
 	
+	public Integer getAvgSwimDepth() {
+		return this.avgSwimDepth;
+	}
+	
+	public type getTaterType() {
+		return this.waterType;
+	}
+	
+	public void setAvgSwimDepth(Integer a) {
+		this.avgSwimDepth = a;
+	}
+	
+	public void setWaterType(type a) {
+		this.waterType = a;
+	}
 }

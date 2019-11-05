@@ -2,7 +2,7 @@ package javasmmr.zoowsome.services.factories;
 
 import javasmmr.zoowsome.models.animals.Animal;
 import javasmmr.zoowsome.models.animals.Bee;
-import javasmmr.zoowsome.models.animals.Beetles;
+import javasmmr.zoowsome.models.animals.Beetle;
 import javasmmr.zoowsome.models.animals.Spider;
 
 public class InsectFactory extends SpeciesFactory {
@@ -15,7 +15,7 @@ public class InsectFactory extends SpeciesFactory {
 		if (Constants.Animals.Insects.BEE.equals(type)) {
 			return new Bee((r1==1),(r2==1),6,"Bee"); // leave empty constructor, for now!
 		} else if (Constants.Animals.Insects.BEETLE.equals(type)) {
-			return new Beetles((r1==1),(r2==1),6,"Beetle");
+			return new Beetle((r1==1),(r2==1),6,"Beetle");
 		} else if (Constants.Animals.Insects.SPIDER.equals(type)){
 			return new Spider((r1==1),(r2==1),8,"Spider");
 		} else {
