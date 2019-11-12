@@ -43,7 +43,8 @@ public class Card implements Comparable<Card> {
 		/*
 		 * C < D < H < S
 		 */
-
+		if(this.number == 'K')
+			return 1;
 		if (this.number > o.number) {
 			return 1;
 		} else if (this.number < o.getNumber()) {

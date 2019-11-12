@@ -37,6 +37,7 @@ public class TestCardDeck {
 		Card c4 = new Card('2', 'D');
 		Card c6 = new Card('Q', 'D');
 		Card c7 = new Card('A', 'D');
+		Card c8 = new Card('K', 'H');
 		/// Creating some cards
 		Card c5 = new Card('L', 'H');
 
@@ -50,13 +51,14 @@ public class TestCardDeck {
 		Assert.assertTrue(cardPack.putComparable(c4) == 1);
 		Assert.assertTrue(cardPack.putComparable(c6) == 1);
 		Assert.assertTrue(cardPack.putComparable(c7) == 1);
+		Assert.assertTrue(cardPack.putComparable(c8) == 1);
 		Assert.assertTrue(cardPack.putComparable(c1) == 0); /// Checking if I can insert an card that already exists
 
 		/// Remove a card
 		cardPack.remove(c2);
 
 		/// Checking the number of cards
-		Assert.assertTrue(cardPack.getNumberOfCards() == 5);
+		Assert.assertTrue(cardPack.getNumberOfCards() == 6);
 	}
 
 }
