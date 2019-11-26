@@ -1,0 +1,37 @@
+<?xml version="1.0"?><content>
+ <EMPLOYEE>
+ 	<id>7065986911492</id>
+	<name>Caretaker_23</name>
+	<salary>23</salary>
+	<isDead>true</isDead>
+	<workingHours>1.1999999999999995</workingHours>
+</EMPLOYEE>
+ <EMPLOYEE>
+ 	<id>4400125417915</id>
+	<name>Caretaker_23</name>
+	<salary>23</salary>
+	<isDead>true</isDead>
+	<workingHours>1.4999999999999991</workingHours>
+</EMPLOYEE>
+ <EMPLOYEE>
+ 	<id>4068434352846</id>
+	<name>Caretaker_23</name>
+	<salary>23</salary>
+	<isDead>true</isDead>
+	<workingHours>2.8999999999999986</workingHours>
+</EMPLOYEE>
+ <EMPLOYEE>
+ 	<id>0463920834109</id>
+	<name>Caretaker_23</name>
+	<salary>23</salary>
+	<isDead>true</isDead>
+	<workingHours>10.2</workingHours>
+</EMPLOYEE>
+ <EMPLOYEE>
+ 	<id>3570682624976</id>
+	<name>Caretaker_23</name>
+	<salary>23</salary>
+	<isDead>true</isDead>
+	<workingHours>10.2</workingHours>
+</EMPLOYEE>
+ </content>

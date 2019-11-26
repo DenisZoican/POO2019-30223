@@ -15,6 +15,9 @@ import zoowsome.models.animals.Reptile;
 import zoowsome.models.animals.Spider;
 import zoowsome.models.animals.Turtle;
 import zoowsome.models.employees.Caretaker;
+import zoowsome.models.employees.Employee;
+import zoowsome.repositories.AnimalRepository;
+import zoowsome.repositories.EmployeesRepository;
 import zoowsome.services.factories.animals.AnimalFactory;
 import zoowsome.services.factories.animals.Constants;
 import zoowsome.services.factories.animals.SpeciesFactory;
@@ -29,12 +32,12 @@ public class MainController {
 		AnimalFactory abstractFactory = new AnimalFactory();
 
 		int counter = 50;
-		
+
 		ArrayList<Animal> an = new ArrayList<Animal>();
-		ArrayList<Caretaker> car = new ArrayList<Caretaker>();
+		ArrayList<Employee> car = new ArrayList<Employee>();
 
 		an.add(new Spider());
-		
+
 		for (int i = 0; i < counter; i++) {
 			int r1 = (int) (Math.random() * 10) % 5;
 			int r2 = (int) (Math.random() * 10) % 3;
@@ -89,7 +92,7 @@ public class MainController {
 			}
 		}
 
-		for (Animal a:an) {
+		for (Animal a : an) {
 			if (a instanceof Reptile) {
 				String s = new String("" + a.getClass());
 				System.out.println("Hello! I'm a " + s.substring(30, s.length()) + " with  " + a.getNrOfLegs()
@@ -101,7 +104,7 @@ public class MainController {
 			} else if (a instanceof Aquatic) {
 				String s = new String("" + a.getClass());
 				System.out.println("Hello! I'm a " + s.substring(30, s.length()) + " with  " + a.getNrOfLegs()
-						+ " legs ad I swim in " + ((Aquatic) a).getTaterType());
+						+ " legs ad I swim in " + ((Aquatic) a).getWaterType());
 			} else if (a instanceof Insect) {
 				String s = new String("" + a.getClass());
 				System.out.println("Hello! I'm a " + s.substring(30, s.length()) + " with  " + a.getNrOfLegs()
@@ -120,20 +123,23 @@ public class MainController {
 			car.add((Caretaker) caretakerFactory.getEmployee("Caretaker"));
 
 		int i = 0;
-		for (Caretaker c : car) {
+		for (Employee c : car) {
 			{
 				for (Animal a : an) {
 					{
 						if (c.getIsDead() == false && a.isTakenCareOf() == false) {
-							String result = c.takeCareOf(a);
+							String result = ((Caretaker)c).takeCareOf(a);
 							DecimalFormat numberFormat = new DecimalFormat("#.00");
 							if (result.equals(Constants.Employees.CaretakerStatus.TCO_KILLED) == true) {
-								System.out.println("The caretaker with the id:" + i + " is dead!The killer: "+a.getName());
+								System.out.println(
+										"The caretaker with the id:" + i + " is dead!The killer: " + a.getName());
 							} else if (result.equals(Constants.Employees.CaretakerStatus.TCO_SUCCES) == true) {
-								System.out.println("The caretaker with the id:" + i + " took care of a "+a.getName());
+								System.out.println("The caretaker with the id:" + i + " took care of a " + a.getName());
 							} else if (result.equals(Constants.Employees.CaretakerStatus.TCO_NO_TIME) == true) {
-								System.out.println("The caretaker with the id:" + i + " didn't have enough time for "+a.getName()+" Maintenance cost was "+a.getMaintenanceCost()+" and the caretaker had just "+numberFormat.format(c.getWorkingHours()));
-							} 
+								System.out.println("The caretaker with the id:" + i + " didn't have enough time for "
+										+ a.getName() + " Maintenance cost was " + a.getMaintenanceCost()
+										+ " and the caretaker had just " + numberFormat.format(((Caretaker)c).getWorkingHours()));
+							}
 						}
 					}
 				}
@@ -141,25 +147,40 @@ public class MainController {
 			}
 		}
 		int j = 1;
-		for(Animal a:an) {
-			System.out.println(a.getName()+" "+j+" is taken care of:"+a.isTakenCareOf());
+		for (Animal a : an) {
+			System.out.println(a.getName() + " " + j + " is taken care of:" + a.isTakenCareOf());
 			j++;
 		}
 
 		/*
-		for(Animal a:an) {
-			System.out.println("Animal "+a.getName());
-			//an.remove(a);
-		}*/
+		 * for(Animal a:an) { System.out.println("Animal "+a.getName()); //an.remove(a);
+		 * }
+		 */
+
+		///Repository XML
+		AnimalRepository animalRepository = new AnimalRepository();
+		animalRepository.save(an);
 		
+		EmployeesRepository employeesRepository = new EmployeesRepository();
+		employeesRepository.save(car);
+		
+		ArrayList<Animal> anXML = animalRepository.load();
+		
+		System.out.println("\n\nTest Load XML");
+		for(Animal c : anXML) {
+			System.out.println(c.getName());
+		}
+
+		System.out.println("\n\nTest Iterator\n\n");
 		Iterator<Animal> it = an.iterator();
-		
-		while(it.hasNext()) {
-			System.out.println("Animal "+it.next().getName());
+		while (it.hasNext()) {
+			System.out.println("Animal " + it.next().getName());
 			it.remove();
 		}
-				
-		//Nu este posibil acest lucru pentru ca nu este permis sa stergem si sa parcurgem in acelasi timp elementele dintr-un ArrrayList.
-		//Eroarea pe care o intalnim este ConcurrentModificationException.
+
+		// Nu este posibil acest lucru pentru ca nu este permis sa stergem si sa
+		// parcurgem in acelasi timp elementele dintr-un ArrrayList.
+		// Eroarea pe care o intalnim este ConcurrentModificationException.
+
 	}
 }
