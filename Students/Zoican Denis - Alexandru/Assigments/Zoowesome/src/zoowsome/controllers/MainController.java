@@ -24,6 +24,7 @@ import zoowsome.services.factories.animals.SpeciesFactory;
 import zoowsome.services.factories.employees.CaretakerFactory;
 import zoowsome.services.factories.employees.EmployeeAbstractFactory;
 import zoowsome.services.factories.employees.EmployeeFactory;
+import zoowsome.views.MainMenuFrame;
 import zoowsome.services.factories.animals.Constants.Animals;
 
 public class MainController {
@@ -36,58 +37,60 @@ public class MainController {
 		ArrayList<Animal> an = new ArrayList<Animal>();
 		ArrayList<Employee> car = new ArrayList<Employee>();
 
+		int nr_animal = 0;
 		an.add(new Spider());
 
 		for (int i = 0; i < counter; i++) {
+			nr_animal++;
 			int r1 = (int) (Math.random() * 10) % 5;
 			int r2 = (int) (Math.random() * 10) % 3;
 			if (r1 == 0) {
 				SpeciesFactory speciesFactory1 = abstractFactory.getSpeciesFactory(Constants.Species.Mammals);
 				if (r2 == 0) {
-					an.add((Mammal) speciesFactory1.getAnimal(Constants.Animals.Mammals.BEAR));
+					an.add((Mammal) speciesFactory1.getAnimal(Constants.Animals.Mammals.BEAR,"Bear"+nr_animal));
 				} else if (r2 == 1) {
-					an.add((Mammal) speciesFactory1.getAnimal(Constants.Animals.Mammals.COW));
+					an.add((Mammal) speciesFactory1.getAnimal(Constants.Animals.Mammals.COW,"Cow"+nr_animal));
 				} else if (r2 == 2) {
-					an.add((Mammal) speciesFactory1.getAnimal(Constants.Animals.Mammals.LLAMA));
+					an.add((Mammal) speciesFactory1.getAnimal(Constants.Animals.Mammals.LLAMA,"Llama"+nr_animal));
 				}
 			} else if (r1 == 1) {
 				SpeciesFactory speciesFactory1 = abstractFactory.getSpeciesFactory(Constants.Species.Aquatics);
 				if (r2 == 0) {
-					an.add((Aquatic) speciesFactory1.getAnimal(Constants.Animals.Aquatics.CATFISH));
+					an.add((Aquatic) speciesFactory1.getAnimal(Constants.Animals.Aquatics.CATFISH,"Catfish"+nr_animal));
 				} else if (r2 == 1) {
-					an.add((Aquatic) speciesFactory1.getAnimal(Constants.Animals.Aquatics.CLOWNFISH));
+					an.add((Aquatic) speciesFactory1.getAnimal(Constants.Animals.Aquatics.CLOWNFISH,"Clownfish"+nr_animal));
 				} else if (r2 == 2) {
-					an.add((Aquatic) speciesFactory1.getAnimal(Constants.Animals.Aquatics.GOLDFISH));
+					an.add((Aquatic) speciesFactory1.getAnimal(Constants.Animals.Aquatics.GOLDFISH,"Goldfish"+nr_animal));
 				}
 			} else if (r1 == 2) {
 				SpeciesFactory speciesFactory1 = abstractFactory.getSpeciesFactory(Constants.Species.Insects);
 
 				if (r2 == 0) {
-					an.add((Insect) speciesFactory1.getAnimal(Constants.Animals.Insects.BEE));
+					an.add((Insect) speciesFactory1.getAnimal(Constants.Animals.Insects.BEE,"Bee"+nr_animal));
 				} else if (r2 == 1) {
-					an.add((Insect) speciesFactory1.getAnimal(Constants.Animals.Insects.BEETLE));
+					an.add((Insect) speciesFactory1.getAnimal(Constants.Animals.Insects.BEETLE,"Beetle"+nr_animal));
 				} else if (r2 == 2) {
-					an.add((Insect) speciesFactory1.getAnimal(Constants.Animals.Insects.SPIDER));
+					an.add((Insect) speciesFactory1.getAnimal(Constants.Animals.Insects.SPIDER,"Spider"+nr_animal));
 				}
 			} else if (r1 == 3) {
 				SpeciesFactory speciesFactory1 = abstractFactory.getSpeciesFactory(Constants.Species.Birds);
 
 				if (r2 == 0) {
-					an.add((Bird) speciesFactory1.getAnimal(Constants.Animals.Birds.FLAMINGO));
+					an.add((Bird) speciesFactory1.getAnimal(Constants.Animals.Birds.FLAMINGO,"Flamingo"+nr_animal));
 				} else if (r2 == 1) {
-					an.add((Bird) speciesFactory1.getAnimal(Constants.Animals.Birds.PARROT));
+					an.add((Bird) speciesFactory1.getAnimal(Constants.Animals.Birds.PARROT,"Parrot"+nr_animal));
 				} else if (r2 == 2) {
-					an.add((Bird) speciesFactory1.getAnimal(Constants.Animals.Birds.PEACOCK));
+					an.add((Bird) speciesFactory1.getAnimal(Constants.Animals.Birds.PEACOCK,"Peacock"+nr_animal));
 				}
 			} else if (r1 == 4) {
 				SpeciesFactory speciesFactory1 = abstractFactory.getSpeciesFactory(Constants.Species.Reptiles);
 
 				if (r2 == 0) {
-					an.add((Reptile) speciesFactory1.getAnimal(Constants.Animals.Reptiles.CHAMELEON));
+					an.add((Reptile) speciesFactory1.getAnimal(Constants.Animals.Reptiles.CHAMELEON,"Chameleon"+nr_animal));
 				} else if (r2 == 1) {
-					an.add((Reptile) speciesFactory1.getAnimal(Constants.Animals.Reptiles.SNAKE));
+					an.add((Reptile) speciesFactory1.getAnimal(Constants.Animals.Reptiles.SNAKE,"Snake"+nr_animal));
 				} else if (r2 == 2) {
-					an.add((Reptile) speciesFactory1.getAnimal(Constants.Animals.Reptiles.TURTLE));
+					an.add((Reptile) speciesFactory1.getAnimal(Constants.Animals.Reptiles.TURTLE,"Turtle"+nr_animal));
 				}
 			}
 		}
@@ -158,18 +161,18 @@ public class MainController {
 		 */
 
 		///Repository XML
-		AnimalRepository animalRepository = new AnimalRepository();
-		animalRepository.save(an);
+		//AnimalRepository animalRepository = new AnimalRepository();
+		//animalRepository.save(an);
 		
-		EmployeesRepository employeesRepository = new EmployeesRepository();
-		employeesRepository.save(car);
+		//EmployeesRepository employeesRepository = new EmployeesRepository();
+		//employeesRepository.save(car);
 		
-		ArrayList<Animal> anXML = animalRepository.load();
+		//ArrayList<Animal> anXML = animalRepository.load();
 		
-		System.out.println("\n\nTest Load XML");
-		for(Animal c : anXML) {
-			System.out.println(c.getName());
-		}
+		//System.out.println("\n\nTest Load XML");
+		//for(Animal c : anXML) {
+			//System.out.println(c.getName());
+		//}
 
 		System.out.println("\n\nTest Iterator\n\n");
 		Iterator<Animal> it = an.iterator();
@@ -181,6 +184,8 @@ public class MainController {
 		// Nu este posibil acest lucru pentru ca nu este permis sa stergem si sa
 		// parcurgem in acelasi timp elementele dintr-un ArrrayList.
 		// Eroarea pe care o intalnim este ConcurrentModificationException.
+		
+		new MainMenuController(new MainMenuFrame("Main Menu"), false); 
 
 	}
 }

@@ -22,6 +22,9 @@ public abstract class Animal implements Killer, XML_Parsable {
 		this.nrOfLegs = nrOfLegs;
 	}
 
+	public double getDangerPerc() {
+		return dangerPerc;
+	}
 	public void decodeFromXml( Element element) {
 		setNrOfLegs (Integer.valueOf(element.getElementsByTagName("nrOfLegs").item(0).getTextContent()));
 		setName(element.getElementsByTagName("name").item(0).getTextContent()) ;

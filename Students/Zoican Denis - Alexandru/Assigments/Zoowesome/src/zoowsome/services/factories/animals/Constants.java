@@ -57,5 +57,10 @@ public final class Constants {
 		public static final String DISCRIMINANT = "DISCRIMINANT";
 	}
 
+	public static final class FRAMES {
+		public static final Integer WIDTH = 700;
+		public static final Integer HEIGHT = 500;
+		public static final String DISCRIMINANT = "DISCRIMINANT";
+	}
 }
 

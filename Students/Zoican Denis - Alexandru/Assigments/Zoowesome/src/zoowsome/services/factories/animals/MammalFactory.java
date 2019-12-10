@@ -12,16 +12,16 @@ public class MammalFactory extends SpeciesFactory {
 	
 	
 	@Override
-	public Animal getAnimal(String type) throws Exception {
+	public Animal getAnimal(String type,String name) throws Exception {
 		int r1 = (int)(Math.random()*10)%4;
 		int r2 = (int)(Math.random()*10)%4;
 		
 		if (Constants.Animals.Mammals.BEAR.equals(type)) {
-			return new Bear(temp[r1],temp[r2],"Bear",4,0.3,0.6); 
+			return new Bear(temp[r1],temp[r2],name,4,0.3,0.6); 
 		} else if (Constants.Animals.Mammals.COW.equals(type)) {
-			return new Cow(temp[r1],temp[r2],"Cow",4,2.3,0.98); 
+			return new Cow(temp[r1],temp[r2],name,4,2.3,0.98); 
 		} else if (Constants.Animals.Mammals.LLAMA.equals(type)){
-			return new Llama(temp[r1],temp[r2],"Llama",4,3.3,0.34); 
+			return new Llama(temp[r1],temp[r2],name,4,3.3,0.34); 
 		} else {
 			throw new Exception("Invalid type");
 		}

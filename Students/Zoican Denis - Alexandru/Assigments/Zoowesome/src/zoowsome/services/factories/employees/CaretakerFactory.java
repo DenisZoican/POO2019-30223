@@ -7,8 +7,10 @@ import zoowsome.models.employees.Employee;
 
 public class CaretakerFactory extends EmployeeAbstractFactory{
 	
+	private static long id;
 	@Override
 	public Employee getEmployee(String type) throws Exception {
-		return new Caretaker("Caretaker",(long)23,new BigDecimal(23),10.2);
+		id++;
+		return new Caretaker("Caretaker",(long)id,new BigDecimal(id*100),10.2);
 	}
 }
