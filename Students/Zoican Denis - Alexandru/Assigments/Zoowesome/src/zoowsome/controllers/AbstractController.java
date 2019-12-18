@@ -13,7 +13,9 @@ public class AbstractController {
 	public AbstractController(ZooFrame frame, boolean hasBackButton) {
 		this.frame = frame;
 		if (hasBackButton)
-			frame.setBackButtonActionListener(new BackButtonListener());
+			{
+				frame.setBackButtonActionListener(new BackButtonListener());
+			}
 	}
 
 	private class BackButtonListener implements ActionListener {

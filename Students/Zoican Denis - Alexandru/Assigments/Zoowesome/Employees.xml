@@ -1,2 +1,58 @@
 <?xml version="1.0"?><content>
+ <EMPLOYEE>
+ 	<id>9719223733161</id>
+	<name>Caretaker_6</name>
+	<salary>600</salary>
+	<isDead>false</isDead>
+	<workingHours>10.2</workingHours>
+</EMPLOYEE>
+ <EMPLOYEE>
+ 	<id>6808261107698</id>
+	<name>Caretaker_7</name>
+	<salary>700</salary>
+	<isDead>false</isDead>
+	<workingHours>10.2</workingHours>
+</EMPLOYEE>
+ <EMPLOYEE>
+ 	<id>7265266813833</id>
+	<name>Caretaker_8</name>
+	<salary>800</salary>
+	<isDead>false</isDead>
+	<workingHours>10.2</workingHours>
+</EMPLOYEE>
+ <EMPLOYEE>
+ 	<id>8074999466819</id>
+	<name>Caretaker_9</name>
+	<salary>900</salary>
+	<isDead>false</isDead>
+	<workingHours>10.2</workingHours>
+</EMPLOYEE>
+ <EMPLOYEE>
+ 	<id>9861256635822</id>
+	<name>Caretaker_10</name>
+	<salary>1000</salary>
+	<isDead>false</isDead>
+	<workingHours>10.2</workingHours>
+</EMPLOYEE>
+ <EMPLOYEE>
+ 	<id>9464045777125</id>
+	<name>Caretaker_11</name>
+	<salary>1100</salary>
+	<isDead>false</isDead>
+	<workingHours>10.2</workingHours>
+</EMPLOYEE>
+ <EMPLOYEE>
+ 	<id>2789983696886</id>
+	<name>Caretaker_12</name>
+	<salary>1200</salary>
+	<isDead>false</isDead>
+	<workingHours>10.2</workingHours>
+</EMPLOYEE>
+ <EMPLOYEE>
+ 	<id>9943481382913</id>
+	<name>Caretaker_13</name>
+	<salary>1300</salary>
+	<isDead>false</isDead>
+	<workingHours>10.2</workingHours>
+</EMPLOYEE>
  </content>

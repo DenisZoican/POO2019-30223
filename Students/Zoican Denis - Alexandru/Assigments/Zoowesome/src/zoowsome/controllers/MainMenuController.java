@@ -28,9 +28,10 @@ public class MainMenuController extends AbstractController {
 	private ArrayList<Employee> em_gui;
 	private AnimalFactory animal_factory;
 	private EmployeeFactory employee_factory;
-	
+
 	public MainMenuController(MainMenuFrame frame, boolean hasBackButton) {
 		super(frame, hasBackButton);
+		
 		animal_factory = new AnimalFactory();
 		employee_factory = new EmployeeFactory();
 		an_gui = new ArrayList<Animal>();
@@ -40,6 +41,7 @@ public class MainMenuController extends AbstractController {
 		frame.setListButtonActionListener(new ListButtonActionListener());
 		frame.setListEmpButtonActionListener(new ListEmpButtonActionListener());
 		frame.setSaveButtonActionListener(new SaveButtonActionListener());
+
 	}
 
 	private class SaveButtonActionListener implements ActionListener {
@@ -55,7 +57,7 @@ public class MainMenuController extends AbstractController {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+
 			EmployeesRepository employeesRepository = new EmployeesRepository();
 			try {
 				employeesRepository.save(em_gui);
@@ -69,6 +71,7 @@ public class MainMenuController extends AbstractController {
 			frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 		}
 	}
+
 	
 	private class ListButtonActionListener implements ActionListener {
 		@Override
@@ -76,14 +79,14 @@ public class MainMenuController extends AbstractController {
 			new AddControllerListAnimals(new AddFrameListAnimals("ListAnimals", an_gui), true);
 		}
 	}
-	
+
 	private class ListEmpButtonActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			new AddControllerListEmployees(new AddFrameListEmployees("ListEmployees", em_gui), true);
 		}
 	}
-	
+
 	private class AddEmpButtonActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -100,7 +103,7 @@ public class MainMenuController extends AbstractController {
 		public void actionPerformed(ActionEvent e) {
 			Animal an = null;
 			String name = ((MainMenuFrame) frame).getInpNameAnimal().getText();
-			if(name.length()==0) {
+			if (name.length() == 0) {
 				JOptionPane.showMessageDialog(frame, "You must enter a name.");
 				return;
 			}

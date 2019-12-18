@@ -1,5 +1,6 @@
 package zoowsome.views;
 
+import java.awt.GridLayout;
 import java.util.ArrayList;
 
 import zoowsome.models.animals.Animal;
@@ -25,6 +26,7 @@ public class AddFrameListAnimals extends ZooFrame {
 			else if (c instanceof Bird)
 				contentPanel.add(new AnimalPanel(c, 5));
 		}
+		
 	}
 
 	@Override

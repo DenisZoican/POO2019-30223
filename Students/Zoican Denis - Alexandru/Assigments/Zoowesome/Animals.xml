@@ -1,12 +1,12 @@
 <?xml version="1.0"?><content>
  <ANIMAL>
  	<nrOfLegs>4</nrOfLegs>
-	<name>asd</name>
+	<name>as</name>
 	<maintenanceCost>0.3</maintenanceCost>
 	<dangerPerc>0.6</dangerPerc>
 	<takenCareOf>false</takenCareOf>
-	<normalBodyTemp>55.0</normalBodyTemp>
-	<percBodyHair>55.0</percBodyHair>
+	<normalBodyTemp>48.0</normalBodyTemp>
+	<percBodyHair>48.0</percBodyHair>
 	<DISCRIMINANT>BEAR</DISCRIMINANT>
 </ANIMAL>
  </content>
