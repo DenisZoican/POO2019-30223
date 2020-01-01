@@ -1,3 +1,5 @@
+package connect4.views;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -14,23 +16,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class DrawImage extends JPanel{
+public class TokenImage extends JPanel{
 	
-	JLabel l = null;
-
-
-	DrawImage(String src){
+	public TokenImage(String src){
 		 ImageIcon img = new ImageIcon(src);
-		 l = new JLabel(img);
-		 l.setLocation(0, 0);
-		 int a = (int)Math.floor(Math.random()*10)%3;
-		 if(a==0)
-		 this.setBackground(Color.red);
-		 if(a==1)
-			 this.setBackground(Color.blue);
-		 if(a==2)
-			 this.setBackground(Color.yellow);
-		 this.setPreferredSize(new Dimension(50,50)); //Why doesn't work?
+		 JLabel l = new JLabel(img);
+		 l.setLocation(0, 0); 
+		 this.setBackground(new Color(60, 61, 71));
+		 this.setBorder(BorderFactory.createLineBorder(new Color(211, 86, 86), 5));
+		 this.setPreferredSize(new Dimension(25,25));
 		 this.add(l);
 	}
 

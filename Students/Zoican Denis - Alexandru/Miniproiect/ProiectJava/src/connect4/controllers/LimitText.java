@@ -1,15 +1,16 @@
-import javax.print.attribute.AttributeSet;
+package connect4.controllers;
+
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
-class limit_text extends PlainDocument {
+public class LimitText extends PlainDocument {
   private int limit;
-  limit_text(int limit) {
+  public LimitText(int limit) {
     super();
     this.limit = limit;
   }
 
-  limit_text(int limit, boolean upper) {
+  LimitText(int limit, boolean upper) {
     super();
     this.limit = limit;
   }

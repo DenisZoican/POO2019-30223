@@ -1,3 +1,5 @@
+package connect4.views;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
@@ -8,8 +10,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class history_label extends JPanel {
-	history_label(int winner,String player1,String player2,int duration){
+public class HistoryLabel extends JPanel {
+	public HistoryLabel(int winner,String player1,String player2,int duration){
 		 this.setLayout(new GridLayout(0,3));
 		 
 		 
@@ -22,15 +24,17 @@ public class history_label extends JPanel {
 		 player2_label.setFont(new Font("Courier New ",Font.BOLD,24));
 		 this.setBorder(BorderFactory.createEmptyBorder(0,40,0,0)); 
 		 
-		 space_label.setForeground(new Color(60, 101, 117));
+		 this.setBackground(new Color(60, 61, 71));
 		 
-		 if(winner==1)
+		 space_label.setForeground(new Color(246, 103, 103));
+		 
+		 if(winner==0)
 		 {
-			 player1_label.setForeground(new Color(16, 204, 66));
-			 player2_label.setForeground(new Color(209, 59, 8));
+			 player1_label.setForeground(new Color(79, 209, 114));
+			 player2_label.setForeground(new Color(201, 84, 44));
 		 } else {
-			 player2_label.setForeground(new Color(16, 204, 66));
-			 player1_label.setForeground(new Color(209, 59, 8));
+			 player2_label.setForeground(new Color(79, 209, 114));
+			 player1_label.setForeground(new Color(201, 84, 44));
 		 }
 		
 
