@@ -1,5 +1,9 @@
 package connect4.models;
 
+/**
+ * Class used for the BotController to store the best move
+ * @author Denis Zoican
+ */
 public class Point {
 	private int x;
 	private int y;

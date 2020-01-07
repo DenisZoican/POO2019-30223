@@ -16,6 +16,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * 
+ * Panel that contains the image of the token
+ */
 public class TokenImage extends JPanel{
 	
 	public TokenImage(String src){

@@ -17,6 +17,11 @@ import javax.swing.border.EmptyBorder;
 
 import connect4.controllers.LimitText;
 
+/**
+ * 
+ * Panel that lets us choose the name of the player
+ */
+
 public class PlayerLabel extends JPanel{
 	public JTextField txtInput = null;
 	

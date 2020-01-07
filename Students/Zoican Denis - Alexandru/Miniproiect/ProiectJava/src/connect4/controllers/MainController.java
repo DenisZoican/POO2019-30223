@@ -35,12 +35,15 @@ import connect4.views.HistoryLabel;
 import connect4.views.MainFrame;
 import connect4.views.TokenImage;
 
+/**
+ * 
+ * @author Denis Zoican
+ */
 public class MainController {
 
 	private MainFrame f;
 	private MainModel m;
 
-	private ChangeFrame ch;
 	private TimerDrop turn_timer = new TimerDrop(this);
 
 	public MainController(MainFrame f, MainModel m) {
@@ -56,11 +59,14 @@ public class MainController {
 		return m;
 	}
 
+	/**
+	 * Method that does queries in the database and add listeners for the components
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public void main() throws SQLException, ClassNotFoundException {
 
-		ch = new ChangeFrame(f, m);
-
-		ch.add_panels_matrix();
+		add_panels_matrix();
 
 		// Connect to database
 		Connection conn = ConnectionSQL.getConnection();
@@ -93,6 +99,11 @@ public class MainController {
 		f.setKeyAdapter(new KeyAdapter('r'), new KeyAdapter('l'), new KeyAdapter('s'));
 	}
 
+	/**
+	 * 
+	 * ActionListener for the Start Button
+	 *
+	 */
 	public class ButtonActionListener implements ActionListener {
 
 		private String player_photo(String name, int us) {
@@ -187,6 +198,12 @@ public class MainController {
 		}
 	}
 
+	/**
+	 * Method that helps that animation
+	 * @param a The player 
+	 * @param r Units of time passed
+	 * @param end Param that tells if the game is over
+	 */
 	public void change_player_turn(int a, int r, boolean end) {
 		remove_panels_matrix();
 
@@ -231,6 +248,12 @@ public class MainController {
 		f.getRightThisGameAll().removeAll();
 	}
 
+	/**
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * Method that is used when the game is over
+	 */
 	public void end_game() throws ClassNotFoundException, SQLException {
 
 		/// Reset matrix with values
@@ -371,6 +394,10 @@ public class MainController {
 		f.getMiddlePanel().setPreferredSize(new Dimension(860, 900));
 	}
 
+	/**
+	 * 
+	 * Method used when we want to drop a token
+	 */
 	public void drop_token() throws ClassNotFoundException, SQLException, ParseException {
 
 		remove_panels_matrix();
@@ -382,19 +409,20 @@ public class MainController {
 				|| f.getPlayer2_string().toLowerCase().compareTo("zoican") == 0 && f.getPlayer() == 1
 				|| f.getPlayer1_string().toLowerCase().compareTo("vlad") == 0 && f.getPlayer() == 0
 				|| f.getPlayer2_string().toLowerCase().compareTo("vlad") == 0 && f.getPlayer() == 1) {
-			Point bestMove = BotController.chooseBestMove(m.getMatVal(), f.getPlayer(), (f.getPlayer() + 1) % 2);
+			BotController bot = new BotController();
+			Point bestMove = bot.chooseBestMove(m.getMatVal(), f.getPlayer(), (f.getPlayer() + 1) % 2);
 			f.setPoz(bestMove.getY());
 			i = bestMove.getX();
 
 			// Reach top and lose
 			if ((m.getMatVal())[0][f.getPoz()].getValue() == 1 && f.isStart() == true) {
-				TimerAnimation(-1, -1, -1);
+				OverAnimation(-1, -1, -1);
 				return;
 			}
 		} else {
 			// Reach top and lose
 			if ((m.getMatVal())[0][f.getPoz()].getValue() == 1 && f.isStart() == true) {
-				TimerAnimation(-1, -1, -1);
+				OverAnimation(-1, -1, -1);
 				return;
 			}
 			while (i < 6 && (m.getMatVal())[i][f.getPoz()].getValue() == 0) {
@@ -450,7 +478,7 @@ public class MainController {
 			c++;
 		}
 		if (c == 4) {
-			TimerAnimation(0, i, f.getPoz());
+			OverAnimation(0, i, f.getPoz());
 			return;
 		}
 
@@ -465,7 +493,7 @@ public class MainController {
 		}
 
 		if (c == 4) {
-			TimerAnimation(1, i, f.getPoz());
+			OverAnimation(1, i, f.getPoz());
 			return;
 		}
 
@@ -478,7 +506,7 @@ public class MainController {
 		}
 
 		if (c == 4) {
-			TimerAnimation(1, i, f.getPoz());
+			OverAnimation(1, i, f.getPoz());
 			return;
 		}
 
@@ -494,7 +522,7 @@ public class MainController {
 		}
 
 		if (c == 4) {
-			TimerAnimation(2, i, f.getPoz());
+			OverAnimation(2, i, f.getPoz());
 			return;
 		}
 
@@ -508,7 +536,7 @@ public class MainController {
 		}
 
 		if (c == 4) {
-			TimerAnimation(2, i, f.getPoz());
+			OverAnimation(2, i, f.getPoz());
 			return;
 		}
 
@@ -524,7 +552,7 @@ public class MainController {
 		}
 
 		if (c == 4) {
-			TimerAnimation(3, i, f.getPoz());
+			OverAnimation(3, i, f.getPoz());
 			return;
 		}
 
@@ -538,13 +566,19 @@ public class MainController {
 		}
 
 		if (c == 4) {
-			TimerAnimation(3, i, f.getPoz());
+			OverAnimation(3, i, f.getPoz());
 			return;
 		}
 
 	}
 
-	public void change_face(int mode) {
+	/**
+	 * 
+	 * @param mode Direction of the change
+	 * 
+	 * Change the position of the token before we drop it
+	 */
+	public void change_token(int mode) {
 
 		if (f.isStart() == true) {
 
@@ -568,7 +602,13 @@ public class MainController {
 		}
 	}
 
-	public void TimerAnimation(int dir, int i, int j) {
+	/**
+	 * A timer used to see the winning move
+	 * @param dir Tells us how the player won
+	 * @param i Number of row
+	 * @param j Number of collumn
+	 */
+	public void OverAnimation(int dir, int i, int j) {
 		f.getT().stop();
 		f.setStart(false);
 		f.setTurn_time(0);
@@ -580,7 +620,6 @@ public class MainController {
 			win_token = f.getSrc1_win();
 		}
 
-		System.out.println("DA DA "+win_token);
 		change_player_turn((f.getPlayer() + 1) % 2, 3, true);
 		if (dir == 0) {
 			int pozi = i;
@@ -676,6 +715,11 @@ public class MainController {
 		}, 5000);
 	}
 
+	/**
+	 * 
+	 * KeyAdapter used to move the token with keys
+	 *
+	 */
 	public class KeyAdapter extends AbstractAction {
 
 		char cr;
@@ -688,9 +732,9 @@ public class MainController {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			if (cr == 'r') {
-				change_face(0);
+				change_token(0);
 			} else if (cr == 'l') {
-				change_face(1);
+				change_token(1);
 			} else if (cr == 's' && f.isStart() == true) {
 				try {
 					drop_token();

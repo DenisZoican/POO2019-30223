@@ -6,6 +6,10 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * Class for the panel that shows the date for the past games
+ */
 public class HistoryDate extends JPanel{
 	public HistoryDate(String date_game)
 	{

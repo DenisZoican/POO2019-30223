@@ -16,6 +16,10 @@ import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+/**
+ * 
+ * Class for the start button
+ */
 public class Button extends JPanel{
 	MainFrame face = null;
 	public Button(String s,MainFrame f){

@@ -3,6 +3,11 @@ package connect4.controllers;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
+/**
+ * Class used to set the maximum number of characters for the JTextField
+ * @author Denis Zoican
+ */
+
 public class LimitText extends PlainDocument {
   private int limit;
   public LimitText(int limit) {

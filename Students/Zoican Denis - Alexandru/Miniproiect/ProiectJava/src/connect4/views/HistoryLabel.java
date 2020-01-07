@@ -10,6 +10,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * Class for the panel that shows the information about the past games
+ */
+
 public class HistoryLabel extends JPanel {
 	public HistoryLabel(int winner,String player1,String player2,int duration){
 		 this.setLayout(new GridLayout(0,3));

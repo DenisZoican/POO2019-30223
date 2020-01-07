@@ -2,6 +2,10 @@ package connect4.models;
 
 import connect4.views.TokenImage;
 
+/**
+ * Class that represents each node in the matrix
+ * @author Denis Zoican
+ */
 public class NodeMatrix {
 	private int value;
 	private int player;
@@ -21,12 +25,22 @@ public class NodeMatrix {
 		this.player = -1;
 	}
 	
+	/**
+	 * 
+	 * @return int If the node is set
+	 */
 	public int getValue() {
 		return value;
 	}
 	public void setValue(int value) {
 		this.value = value;
 	}
+	
+	/**
+	 * 
+	 * @return TokenImage The panel with the token
+	 */
+	
 	public TokenImage getToken() {
 		return token;
 	}
@@ -34,6 +48,10 @@ public class NodeMatrix {
 		this.token = token;
 	}
 
+	/**
+	 * 
+	 * @return int Player
+	 */
 	public int getPlayer() {
 		return player;
 	}

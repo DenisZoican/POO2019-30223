@@ -28,9 +28,9 @@ import javax.swing.Timer;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
-import connect4.controllers.ChangeFrame;
 import connect4.controllers.ConnectionSQL;
 import connect4.controllers.TimerDrop;
+
 
 public class MainFrame extends JFrame {
 
@@ -52,7 +52,6 @@ public class MainFrame extends JFrame {
 	private JPanel rightThisGame;
 	private JPanel thisGamePanel;
 	private JPanel matrixPanel;
-	private JPanel historyPanel;
 	private JPanel middlePanel;
 	private JPanel leftPanel;
 	private JPanel rightPanel;
@@ -86,7 +85,6 @@ public class MainFrame extends JFrame {
 		setRightThisGame(new JPanel());
 		setThisGamePanel(new HistoryDate("This game"));
 		setMatrixPanel(new JPanel());
-		historyPanel = new JPanel();
 		setMiddlePanel(new JPanel());
 		setLeftPanel(new JPanel());
 		setRightPanel(new JPanel());
@@ -165,7 +163,10 @@ public class MainFrame extends JFrame {
 		getMiddlePanel().getActionMap().put("space", adapterS);
 	}
 
-	
+	/**
+	 * Method that adds a ActionListener to the startButton
+	 * @param a ActionListener for the start button
+	 */
 	public void setStartButtonListener(ActionListener a) {
 		for(Component c:getStartButton().getComponents()) {
 			if(c instanceof JButton) {
@@ -182,6 +183,10 @@ public class MainFrame extends JFrame {
 		this.rightSQLHistory = rightSQLHistory;
 	}
 
+	/**
+	 * 
+	 * @return String The name of the first player
+	 */
 	public String getPlayer1_string() {
 		return player1_string;
 	}
@@ -190,6 +195,7 @@ public class MainFrame extends JFrame {
 		this.player1_string = player1_string;
 	}
 
+	
 	public PlayerLabel getPlayer1_select() {
 		return player1_select;
 	}
@@ -198,6 +204,10 @@ public class MainFrame extends JFrame {
 		this.player1_select = player1_select;
 	}
 
+	/**
+	 * 
+	 * @return String The name of the second player
+	 */
 	public String getPlayer2_string() {
 		return player2_string;
 	}
@@ -254,6 +264,10 @@ public class MainFrame extends JFrame {
 		this.src1_win = src1_win;
 	}
 
+	/**
+	 * 
+	 * @return Timer Timer animation
+	 */
 	public Timer getT() {
 		return t;
 	}
@@ -334,6 +348,10 @@ public class MainFrame extends JFrame {
 		this.startButton = startButton;
 	}
 
+	/**
+	 * 
+	 * @return LinkedList Where we store the past games
+	 */
 	public LinkedList<JPanel> getListThisGame() {
 		return listThisGame;
 	}

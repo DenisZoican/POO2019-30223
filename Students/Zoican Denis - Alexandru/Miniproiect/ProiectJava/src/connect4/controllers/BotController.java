@@ -3,8 +3,14 @@ package connect4.controllers;
 import connect4.models.NodeMatrix;
 import connect4.models.Point;
 
+/**
+ * This classed is used for the Bot
+ * @author Denis Zoican
+ */
+
 public class BotController {
-	static Boolean noMoreMoves(NodeMatrix[][] a) {
+
+	private Boolean noMoreMoves(NodeMatrix[][] a) {
 		for (int i = 0; i < 6; i++)
 			for (int j = 0; j < 7; j++) {
 				if (a[i][j].getPlayer() == -1)
@@ -13,190 +19,153 @@ public class BotController {
 		return true;
 	}
 
-	static int count_board(int[] a,int player)
-	{
-	    int s = 0;
+	private int count_board(int[] a, int player) {
+		int s = 0;
 
-	    for(int i=0; i<4; i++)
-	        if(a[i]==player)
-	        {
-	            s++;
-	        }
+		for (int i = 0; i < 4; i++)
+			if (a[i] == player) {
+				s++;
+			}
 
-	    return s;
+		return s;
 	}
-	
-	static int evaluate_board(NodeMatrix[][] a, int player, int opponent) {
+
+	private int evaluate_board(NodeMatrix[][] a, int player, int opponent) {
 		int score = 0;
 		int c[] = new int[4];
-	    ///horizontal
-	    for(int i=0; i<6; i++)
-	    {
-	        for(int j=0; j<4; j++)
-	        {
-	            for(int k=0; k<4; k++)
-	            {
-	                c[k]=a[i][j+k].getPlayer();
-	            }
+		/// horizontal
+		for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < 4; j++) {
+				for (int k = 0; k < 4; k++) {
+					c[k] = a[i][j + k].getPlayer();
+				}
 
-	            int count_p = count_board(c,player);
-	            int count_o = count_board(c,opponent);
+				int count_p = count_board(c, player);
+				int count_o = count_board(c, opponent);
 
-	            if(count_p==2)
-	            {
-	                score+=10;
-	            }
+				if (count_p == 2) {
+					score += 10;
+				}
 
-	            if (count_o==2)
-	            {
-	                score-=10;
-	            }
+				if (count_o == 2) {
+					score -= 10;
+				}
 
-	            if(count_p==3)
-	            {
-	                score+=100;
-	            }
+				if (count_p == 3) {
+					score += 100;
+				}
 
-	            if(count_o==3)
-	            {
-	                score-=100;
-	            }
+				if (count_o == 3) {
+					score -= 100;
+				}
 
-	            if(count_p==4)
-	            {
-	                return 10000000;
-	            }
+				if (count_p == 4) {
+					return 10000000;
+				}
 
-	            if(count_o==4)
-	            {
-	                return -10000000;
-	            }
-	        }
-	    }
+				if (count_o == 4) {
+					return -10000000;
+				}
+			}
+		}
 
+		/// vertical
+		for (int j = 0; j < 7; j++) {
+			for (int i = 0; i < 3; i++) {
+				for (int k = 0; k < 4; k++) {
+					c[k] = a[i + k][j].getPlayer();
+				}
+				int count_p = count_board(c, player);
+				int count_o = count_board(c, opponent);
 
-	    ///vertical
-	    for(int j=0; j<7; j++)
-	    {
-	        for(int i=0; i<3; i++)
-	        {
-	            for(int k=0; k<4; k++)
-	            {
-	                c[k]=a[i+k][j].getPlayer();
-	            }
-	            int count_p = count_board(c,player);
-	            int count_o = count_board(c,opponent);
+				if (count_p == 2) {
+					score += 10;
+				}
+				if (count_o == 2) {
+					score -= 10;
+				}
 
-	            if(count_p==2)
-	            {
-	                score+=10;
-	            }
-	            if(count_o==2)
-	            {
-	                score-=10;
-	            }
+				if (count_p == 3) {
+					score += 100;
+				}
+				if (count_o == 3) {
+					score -= 100;
+				}
 
-	            if(count_p==3)
-	            {
-	                score+=100;
-	            }
-	            if(count_o==3)
-	            {
-	                score-=100;
-	            }
+				if (count_p == 4) {
+					return 10000000;
+				}
+				if (count_o == 4) {
+					return -10000000;
+				}
+			}
+		}
 
-	            if(count_p==4)
-	            {
-	                return 10000000;
-	            }
-	            if(count_o==4)
-	            {
-	                return -10000000;
-	            }
-	        }
-	    }
+		/// diagonal UL-DR
+		for (int i = 0; i < 3; i++)
+			for (int j = 0; j < 4; j++) {
+				for (int k = 0; k < 4; k++) {
+					c[k] = a[i + k][j + k].getPlayer();
+				}
+				int count_p = count_board(c, player);
+				int count_o = count_board(c, opponent);
 
-	    ///diagonal UL-DR
-	    for(int i=0; i<3; i++)
-	        for(int j=0; j<4; j++)
-	        {
-	            for(int k=0; k<4; k++)
-	            {
-	                c[k]=a[i+k][j+k].getPlayer();
-	            }
-	            int count_p = count_board(c,player);
-	            int count_o = count_board(c,opponent);
+				if (count_p == 2) {
+					score += 10;
+				}
+				if (count_o == 2) {
+					score -= 10;
+				}
 
-	            if(count_p==2)
-	            {
-	                score+=10;
-	            }
-	            if(count_o==2)
-	            {
-	                score-=10;
-	            }
+				if (count_p == 3) {
+					score += 100;
+				}
+				if (count_o == 3) {
+					score -= 100;
+				}
 
-	            if(count_p==3)
-	            {
-	                score+=100;
-	            }
-	            if(count_o==3)
-	            {
-	                score-=100;
-	            }
+				if (count_p == 4) {
+					return 10000000;
+				}
+				if (count_o == 4) {
+					return -10000000;
+				}
+			}
 
-	            if(count_p==4)
-	            {
-	                return 10000000;
-	            }
-	            if(count_o==4)
-	            {
-	                return -10000000;
-	            }
-	        }
+		/// diagonal DL-UR
+		for (int i = 0; i < 3; i++)
+			for (int j = 0; j < 4; j++) {
+				for (int k = 0; k < 4; k++) {
+					c[k] = a[i + 3 - k][j + k].getPlayer();
+				}
+				int count_p = count_board(c, player);
+				int count_o = count_board(c, opponent);
 
-	    ///diagonal DL-UR
-	    for(int i=0; i<3; i++)
-	        for(int j=0; j<4; j++)
-	        {
-	            for(int k=0; k<4; k++)
-	            {
-	                c[k]=a[i+3-k][j+k].getPlayer();
-	            }
-	            int count_p = count_board(c,player);
-	            int count_o = count_board(c,opponent);
+				if (count_p == 2) {
+					score += 10;
+				}
+				if (count_o == 2) {
+					score -= 10;
+				}
 
-	            if(count_p==2)
-	            {
-	                score+=10;
-	            }
-	            if(count_o==2)
-	            {
-	                score-=10;
-	            }
+				if (count_p == 3) {
+					score += 100;
+				}
+				if (count_o == 3) {
+					score -= 100;
+				}
 
-	            if(count_p==3)
-	            {
-	                score+=100;
-	            }
-	            if(count_o==3)
-	            {
-	                score-=100;
-	            }
-
-	            if(count_p==4)
-	            {
-	                return 10000000;
-	            }
-	            if(count_o==4)
-	            {
-	                return -10000000;
-	            }
-	        }
-	    return score;
+				if (count_p == 4) {
+					return 10000000;
+				}
+				if (count_o == 4) {
+					return -10000000;
+				}
+			}
+		return score;
 	}
 
-	static int MinMax(NodeMatrix[][] a, int level, int depth, int player, int opponent) {
+	private int MinMax(NodeMatrix[][] a, int level, int depth, int player, int opponent) {
 		int score = evaluate_board(a, player, opponent);
 
 		if (score == 10000000 || score == -10000000 || depth == 0) {
@@ -205,7 +174,6 @@ public class BotController {
 
 		if (noMoreMoves(a))
 			return 0;
-
 
 		/// Choose maxi
 		if (level != 0) {
@@ -249,7 +217,15 @@ public class BotController {
 		}
 	}
 
-	static Point chooseBestMove(NodeMatrix[][] a, int player, int opponent) {
+	/**
+	 * Method used to schoose the best move for the bot to do using the MinMax
+	 * algorithm
+	 * 
+	 * @param a        The matrix with the tokens
+	 * @param player   The player that has to move
+	 * @param opponent The opponent
+	 */
+	public Point chooseBestMove(NodeMatrix[][] a, int player, int opponent) {
 
 		int mini = -1000000000;
 		Point pos = new Point(0, 0);

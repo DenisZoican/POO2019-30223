@@ -10,6 +10,11 @@ import javax.swing.Timer;
 
 import connect4.views.MainFrame;
 
+/**
+ * Class used for animation
+ * @author Denis Zoican
+ *
+ */
 public class TimerDrop {
 
 	private MainController ex;

@@ -9,6 +9,9 @@ import javax.swing.*;
 import connect4.models.MainModel;
 import connect4.views.MainFrame;
 
+/**
+ * The class that launchs the game
+ */
 public class MainApp extends JPanel {
 	 public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		 MainFrame view = new MainFrame();
